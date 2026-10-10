@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://civics-rights.onrender.com/"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://civics-rights.onrender.com/"
+    }
+  ]
+}
