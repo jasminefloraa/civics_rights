@@ -54,7 +54,8 @@ export const createReport = async (req, res) => {
 export async function listReports(query, extra = {}) {
   const page = Math.max(1, parseInt(query.page) || 1), limit = Math.min(50, Math.max(1, parseInt(query.limit) || 12));
   const f = { ...extra };
-  if (query.q) { const r = new RegExp(esc(String(query.q).slice(0, 100)), 'i'); f.$or = [{ title: r }, { description: r }, { locationName: r }]; }
+  const q = String(query.q ?? '').trim().slice(0, 100);
+  if (q) { const r = new RegExp(esc(q), 'i'); f.$or = [{ title: r }, { description: r }, { locationName: r }]; }
   if (query.category) { if (!CATEGORIES.includes(query.category)) throw new HttpError(400, 'Unknown category.'); f.category = query.category; }
   if (query.status) { if (!STATUSES.includes(query.status)) throw new HttpError(400, 'Unknown status.'); f.status = query.status; }
   if (query.from || query.to) {

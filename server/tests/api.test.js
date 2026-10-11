@@ -65,6 +65,8 @@ describe('reports', () => {
     expect((await request(app).get('/api/reports')).body.data.pagination.total).toBe(2);
     expect((await request(app).get('/api/reports?category=Garbage and sanitation')).body.data.reports).toHaveLength(1);
     expect((await request(app).get('/api/reports?q=pothole')).body.data.reports).toHaveLength(1);
+    expect((await request(app).get('/api/reports?q=')).body.data.reports).toHaveLength(2);
+expect((await request(app).get('/api/reports?q=%20%20')).body.data.reports).toHaveLength(2);
     expect((await request(app).get('/api/reports?status=Resolved')).body.data.reports).toHaveLength(0);
     expect((await request(app).get('/api/reports?limit=1&page=2')).body.data.reports).toHaveLength(1);
     expect((await request(app).get('/api/reports?category=Bad')).status).toBe(400);

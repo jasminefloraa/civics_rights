@@ -189,6 +189,21 @@ civics_rights/
 ```
 
 ## Getting started
+## AI-assisted development
+
+**AI development tool:** Kiro
+
+Kiro was used as a development assistant to review the CivicSignal codebase, understand its architecture, and identify an edge case in report search handling.
+
+Tasks completed with Kiro assistance:
+
+1. Reviewed the frontend and backend structure, including Express routes, controllers, models, middleware, and React components.
+2. Identified an issue where whitespace-only search queries were not normalized before filtering reports.
+3. Updated the report-search controller to trim query whitespace and limit the query length.
+4. Added API test assertions for empty and whitespace-only search queries.
+5. Ran the backend Jest and Supertest test suite to validate the changes.
+
+The suggested changes were reviewed and tested in the local project. AI assistance was used to support development and testing, not as a replacement for understanding or validating the code.
 
 Follow these steps to run CivicSignal locally.
 
